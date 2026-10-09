@@ -56,10 +56,11 @@ const createOrder = async (req, res) => {
             }
 
             const itemTotal = cartItem.quantity * product.price;
-
+            console.log("ORDER PRODUCT IMAGE:", product.imageUrl);
             orderItems.push({
                 productId: product._id,
                 name: product.name,
+                imageUrl: product.imageUrl,
                 quantity: cartItem.quantity,
                 price: product.price,
                 total: itemTotal
@@ -101,6 +102,7 @@ const createOrder = async (req, res) => {
     }
 };
 
+
 const getUserOrders = async (req, res) => {
     try {
         const { userId } = req.params;
@@ -135,6 +137,7 @@ const getUserOrders = async (req, res) => {
     }
 };
 
+
 const getOrderById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -162,6 +165,7 @@ const getOrderById = async (req, res) => {
         });
     }
 };
+
 
 const updateOrderStatus = async (req, res) => {
     try {
@@ -228,6 +232,7 @@ const updateOrderStatus = async (req, res) => {
     }
 };
 
+
 const cancelOrder = async (req, res) => {
     try {
         const { id } = req.params;
@@ -284,6 +289,7 @@ const cancelOrder = async (req, res) => {
     }
 };
 
+
 const deleteOrder = async (req, res) => {
     try {
         const { id } = req.params;
@@ -318,6 +324,8 @@ const deleteOrder = async (req, res) => {
         });
     }
 };
+
+
 const getAllOrders = async (req, res) => {
     try {
         const orders = await Order.find()
@@ -334,6 +342,7 @@ const getAllOrders = async (req, res) => {
         });
     }
 };
+
 
 const getAdminOrderById = async (req, res) => {
     try {
@@ -356,6 +365,7 @@ const getAdminOrderById = async (req, res) => {
         });
     }
 };
+
 
 const updateAdminOrderStatus = async (req, res) => {
     try {
@@ -412,6 +422,7 @@ const updateAdminOrderStatus = async (req, res) => {
         });
     }
 };
+
 
 module.exports = {
     createOrder,

@@ -18,7 +18,11 @@ const registerUser = async (req, res) => {
     }
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const hashedPassword = await bcrypt.hash(
+      password,
+      salt
+    );
 
     const newUser = new User({
       name,
@@ -64,7 +68,10 @@ const loginUser = async (req, res) => {
       });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(
+      password,
+      user.password
+    );
 
     if (!isMatch) {
       return res.status(401).json({
@@ -89,6 +96,8 @@ const loginUser = async (req, res) => {
       message: "Login successful",
       data: {
         id: user._id,
+        name: user.name,
+        email: user.email,
         role: user.role,
         token: token
       }

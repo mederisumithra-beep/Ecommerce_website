@@ -13,6 +13,11 @@ const orderItemSchema = new mongoose.Schema(
             required: true
         },
 
+        imageUrl: {
+            type: String,
+            default: ""
+        },
+
         quantity: {
             type: Number,
             required: true,

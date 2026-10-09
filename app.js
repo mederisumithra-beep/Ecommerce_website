@@ -16,6 +16,8 @@ app.use("/category", require("./routes/categoryRoutes"));
 app.use("/cart", require("./routes/cartRoutes"));
 app.use("/order", require("./routes/orderRoutes"));
 app.use("/api/mutual-funds", require("./routes/mutualFundRoutes"));
+app.use("/wishlist", require("./routes/wishlistRoutes"));
+app.use("/address", require("./routes/addressRoutes"));
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
